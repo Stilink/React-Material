@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {TodoList} from "./TodoList";
+import {Login} from "./Login";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from "moment";
@@ -70,6 +71,7 @@ class App extends Component {
                 <br/>
                 <br/>
                 <TodoList todoList={this.state.items}/>
+                <Login />
             </div>
         );
     }
