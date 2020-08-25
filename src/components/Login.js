@@ -13,6 +13,11 @@ import './Login.css'
 
 export class Login extends React.Component{
 
+    constructor(props){
+        super(props);
+        this.handleSubmit=this.handleSubmit.bind(this);
+    }
+
     render(){
         return (
             <React.Fragment>
@@ -23,7 +28,7 @@ export class Login extends React.Component{
                             <LockIcon />
                         </Avatar>
                         <Typography variant="h2">Sign in</Typography>
-                        <form className="form">
+                        <form className="form" onSubmit={this.handleSubmit}>
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="email">Email Address</InputLabel>
                                 <Input id="email" name="email" autoComplete="email" autoFocus />
@@ -51,6 +56,17 @@ export class Login extends React.Component{
                 </main>
             </React.Fragment>
         );
+    }
+
+
+    handleSubmit(e) {
+        let email = document.getElementById('email').value
+        let password = document.getElementById('password').value
+        if (!email || !password)
+            return;
+        if(localStorage.getItem(email) === password){
+            this.props.isLoggedInChange(true);
+        }
     }
 
 }
